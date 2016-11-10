@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en" ng-app="LunchCheck">
+  <head>
+    <title>Lunch Checker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <style>
+      .message { font-size: 1.3em; font-weight: bold; color:"{{colorCue}}"}
+    </style>
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+  </head>
+<body>
+   <div class="container" ng-controller="LunchCheckController">
+     <h1>Lunch Checker</h1>
+
+         <div class="form-group">
+             <input id="lunch-menu" type="text"
+             placeholder="list comma separated dishes you usually have for lunch"
+             ng-model="lunchDishes"
+             class="form-control" ng-style="{'border-color': colorCue}">
+             <i><small>Note: An empty item, i.e., ,, is not considered towards to the count</small></i>
+         </div>
+         
+         <div class="form-group">
+             <button class="btn btn-default" ng-click="checkLunch()">Check If Too Much</button>
+         </div>
+         <div class="form-group message" ng-style="{'color': colorCue}">           
+           {{messageOverLunch}}
+         </div>
+   </div>
+
+</body>
+</html>
