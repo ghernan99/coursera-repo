@@ -1,0 +1,22 @@
+<div ng-if = "resultsFound()">    
+    <br>
+    <h3> Menu items found </h3>
+    <table width="100%" border="1">
+        <tr>
+            <td>Short name</td>
+            <td>Name</td>
+            <td>Description</td>
+            <td></td>
+        </tr>  
+        <tr ng-repeat="item in found">
+            <td>{{ item.short_name }}</td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.description }}</td>
+            <td><button ng-click="onRemove({index: $index});">Don't want this one!</button></td>
+        </tr>
+    </table>    
+</div>
+<div ng-if = "!resultsFound()">
+    <br>
+    <h3>Nothing found!</h3>
+</div>
