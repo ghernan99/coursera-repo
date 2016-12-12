@@ -1,0 +1,68 @@
+
+<div class="container">
+      <form name='regForm' novalidate>
+
+        <input style="color: black"type="text" name="firstName" placeholder="First name"
+          ng-model="$ctrl.firstName"
+          required
+          minlength="1"
+          ng-maxlength="50">          
+          <span
+            ng-if="(regForm.firstName.$error.minlength || regForm.firstName.$error.required) && regForm.firstName.$touched">
+            First name must be at least 1 character long
+          </span>
+          <span ng-if="regForm.firstName.$error.maxlength && regForm.firstName.$touched">
+            First name must not be longer than 50 characters
+          </span>
+          <br>
+
+        <input style="color: black" type="text" name="lastName" placeholder="Last name"
+          ng-model="$ctrl.lastName"
+          required
+          minlength="1"
+          ng-maxlength="50">          
+          <span
+            ng-if="(regForm.lastName.$error.minlength || regForm.lastName.$error.required) && regForm.lastName.$touched">
+            Last name must be at least 1 character long
+          </span>
+          <span ng-if="regForm.lastName.$error.maxlength && regForm.lastName.$touched">
+            Last name must not be longer than 50 characters
+          </span>
+          <br>
+
+        <input style="color: black" type="email" name="email" placeholder="Email"
+          ng-model="$ctrl.email"
+          required>
+          <span ng-if="regForm.email.$invalid && regForm.email.$touched">
+            Must be a valid email address: handle@domain format
+          </span>
+          <br>
+
+        <input style="color: black" type="text" name="phone" placeholder="Phone ###-###-####"
+          ng-model="$ctrl.phone"
+          pattern="(\d{3})-(\d{3})-(\d{4})">
+          <span ng-if="regForm.phone.$invalid && regForm.phone.$touched">
+            Phone must be in the format ###-###-####.
+          </span>
+          <br>
+
+        <input style="color: black" type="text" name="menuItemShortName" placeholder="Menu item (short name)"
+          ng-model="$ctrl.menuItemShortName"
+          required>
+          <span ng-if="regForm.menuItemShortName.$error.required && regForm.menuItemShortName.$touched">
+            Provide a menu item as your favorite.
+          </span>
+          <span ng-if="!$ctrl.menuItemValid">
+            No such menu number exists.
+          </span>
+          <br>
+          <br>
+        <button id="submit-button"
+          ng-disabled="regForm.$invalid"
+          ng-click="$ctrl.submit()">Submit</button>          
+      </form>    
+      <br>
+      <div ng-if="$ctrl.completed">
+        Your information has been saved.
+      </div>
+</div>
